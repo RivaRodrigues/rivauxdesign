@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rivelino Rodrigues | Designer Pro</title>
    
+    <link rel="icon" type="image/png" href="favicon.ico">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -51,7 +53,7 @@
             display: flex; align-items: center; justify-content: space-between;
             z-index: 5000;
             background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 100%);
-            transition: background 0.4s ease; /* Transição suave para o fundo */
+            transition: background 0.4s ease;
         }
         nav.nav-active-mobile { background: transparent !important; box-shadow: none !important; border: none !important; }
         
@@ -75,8 +77,8 @@
 
         .btn-contact { position: relative; padding: 12px 56px; border: 1.5px solid var(--blue); border-radius: 50px; color: var(--white); text-decoration: none; font-size: 12px; font-weight: 700; text-transform: uppercase; overflow: hidden; background: transparent; display: flex; align-items: center; }
         .btn-spotlight { position: absolute; width: 80px; height: 80px; background: var(--blue); border-radius: 50%; opacity: 0; filter: blur(25px); pointer-events: none; transform: translate(-50%, -50%); z-index: -1; }
-        .btn-contact:hover { color: #000; }
-        .btn-contact:hover .btn-spotlight { opacity: 1; width: 300%; height: 300%; transition: 0.6s; }
+        .btn-contact:hover { background-color: var(--blue);color:#000;}
+        .btn-contact:hover .btn-spotlight {width: 300%; height: 300%; transition: 0.9s; }
 
         /* HAMBURGER */
         .hamburger { display: none; background: none; border: none; padding: 10px; width: 50px; z-index: 6000; position: relative; height: 45px;}
@@ -87,7 +89,6 @@
         .ham-active .ham-line-3 { transform: translateY(-9px) rotate(-45deg); width: 35px; }
 
         /* MOBILE OVERLAY */
-        /* Removido o 'transition' do CSS para evitar conflitos. O GSAP controla o tempo 100% agora */
         .mobile-overlay { position: fixed; top: -100%; left: 0; width: 100%; height: 100%; background: var(--overlay-color); z-index: 4500; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 15px; }
         .mobile-overlay a { font-family: var(--font-heading); font-size: 24px; color: white; text-decoration: none; font-weight: 900; text-transform: uppercase; position: relative; transition: 0.3s; }
         .mobile-overlay a::before { content: attr(data-text); position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 30px; color: var(--blue); opacity: 0; font-weight: 900; z-index: -1; transition: 0.5s ease; white-space: nowrap; pointer-events: none; }
@@ -118,7 +119,11 @@
         .project-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 194, 255, 0.95); padding: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; opacity: 0; transition: 0.4s; transform: translateY(10px); }
         .project-card:hover .project-overlay { opacity: 1; transform: translateY(0); }
         .project-card:hover .project-img { transform: scale(1.12); }
-        .btn-view-all { display: inline-block; padding: 15px 40px; border: 1px solid var(--blue); color: var(--blue); text-decoration: none; border-radius: 12px; font-weight: 900; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        
+        /* Ajuste do respiro no texto dos projetos para separar do botão "Ver" */
+        .project-overlay p { margin-bottom: 30px; line-height: 1.5; color: rgba(255,255,255,0.9); }
+        
+        .btn-view-all { display: inline-block; padding: 15px 40px; border: 1px solid var(--blue); color: var(--blue); text-decoration: none; border-radius: 50px; font-weight: 900; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .btn-view-all:hover { background: var(--blue); color: #000; }
         .btn-project-cta { padding: 10px 25px; border: 2.3px solid #000; color: #000; text-transform: uppercase; text-decoration: none; font-size: 11px; font-weight: 900; border-radius: 50px; }
 
@@ -135,7 +140,7 @@
 
         .about-content-layout { display: flex; align-items: flex-start; gap: 80px; margin-bottom: 100px; }
         .about-image-side { width: 40%; }
-        .about-img-box { width: 100%; height: 500px; border-radius: 30px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .about-img-box { width: 100%; height: 500px; border-radius: 30px; overflow: hidden;}
         .about-img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0.5s ease; }
         .about-img-box:hover img { filter: grayscale(0); }
        
@@ -184,7 +189,7 @@
         .skill-desc { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
 
         /* -------------------------------------------
-           SEÇÃO CURRÍCULO (ESTRUTURA GRID/FLEX)
+           SEÇÃO CURRÍCULO
         ------------------------------------------- */
         .curriculo-section { background-color: var(--bg); position: relative; z-index: 100; padding: 120px 8%; border-top: 1px solid rgba(255,255,255,0.05); }
         
@@ -369,22 +374,44 @@
             .hero { padding-left: 0; justify-content: center; text-align: center; }
             .hero-content { z-index: 50; }
             .hero-content div { font-size: 1.3rem !important; margin-top: 15px !important; white-space: nowrap; }
+            
+            /* CONTROLE DE OPACIDADE DA FOTO NO MOBILE: 
+               1 = totalmente visível / 0.5 = meio transparente / 0.15 = bem apagada */
             .hero-image-wrapper { opacity: 1; }
 
             .projects-section, .about-section, .curriculo-section, .services-section, .contact-section { display: block; padding: 100px 5%; }
             .projects-header, .about-image-side, .about-text-side { width: 100%; text-align: center; margin-bottom: 40px; position: relative; top: 0; }
-            .projects-grid, .about-content-layout { grid-template-columns: 1fr; width: 100%; }
-           
-            .skills-grid { grid-template-columns: repeat(2, 1fr); }
-           
-            .project-card { height: 60vh; min-height: 400px; width: 100%; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 25px; }
             
+            /* CSS STICKY: O segredo para o empilhamento perfeito de projetos sem bugar no scroll para cima */
+            .projects-grid { 
+                grid-template-columns: 1fr; 
+                width: 100%; 
+                gap: 40px; 
+            }
+            .project-card { 
+                position: sticky; 
+                height: 60vh; 
+                min-height: 400px; 
+                width: 100%; 
+                border-radius: 20px; 
+                border: 1px solid rgba(255,255,255,0.1); 
+                box-shadow: 0 -15px 30px rgba(0,0,0,0.9); 
+                margin-bottom: 0; 
+            }
+            /* A "escadinha" que faz os cards grudarem abaixo da navbar um a um */
+            .project-card:nth-child(1) { top: 100px; }
+            .project-card:nth-child(2) { top: 120px; }
+            .project-card:nth-child(3) { top: 140px; }
+            .project-card:nth-child(4) { top: 160px; }
+           
             .about-content-layout { display: flex; flex-direction: column; gap: 40px;}
             .about-img-box { height: 400px; }
+            
             .skills-section-wrapper { margin-top: 40px;}
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
+            
             .services-grid { grid-template-columns: 1fr; }
 
-            /* Ordem Correta do Currículo no Mobile (Texto -> Imagem -> Botões) */
             .curriculo-showcase { 
                 display: flex; 
                 flex-direction: column; 
@@ -412,7 +439,6 @@
             
             .btn-whatsapp, .btn-submit { width: 100%; justify-content: center; text-align: center; display: flex; }
             
-            /* Botões de Download do Currículo em COLUNA no Mobile (Pedido do Usuário) */
             .curriculo-buttons { 
                 flex-direction: column; 
                 gap: 15px; 
@@ -502,11 +528,19 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <img src="case-img.jpg" class="project-img">
-                    <div class="project-overlay"><h3>FINTECH UX</h3><p>Design moderno para transações bancárias complexas.</p><a href="#" class="btn-project-cta">Ver</a></div>
+                    <div class="project-overlay">
+                        <h3>FINTECH UX</h3>
+                        <p>Design moderno para transações bancárias complexas.</p>
+                        <a href="#" class="btn-project-cta">Ver</a>
+                    </div>
                 </div>
                 <div class="project-card">
                     <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200" class="project-img">
-                    <div class="project-overlay"><h3>DASHBOARD AI</h3><p>Painel de controle com dados estratégicos em tempo real.</p><a href="#" class="btn-project-cta">Ver</a></div>
+                    <div class="project-overlay">
+                        <h3>DASHBOARD AI</h3>
+                        <p>Painel de controle com dados estratégicos em tempo real.</p>
+                        <a href="#" class="btn-project-cta">Ver</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -553,13 +587,11 @@
                             <div class="skill-title">JavaScript</div>
                             <div class="skill-desc">Lógica de interface, manipulação de DOM e interações dinâmicas fluidas.</div>
                         </div>
-                        
                         <div class="skill-card">
                             <i class="fa-solid fa-wand-magic-sparkles skill-icon"></i>
                             <div class="skill-title">GSAP</div>
                             <div class="skill-desc">Criação de animações complexas e imersivas baseadas em scroll e interações.</div>
                         </div>
-                        
                         <div class="skill-card">
                             <i class="fa-brands fa-bootstrap skill-icon"></i>
                             <div class="skill-title">Bootstrap 5</div>
@@ -570,7 +602,6 @@
                             <div class="skill-title">Photoshop</div>
                             <div class="skill-desc">Manipulação avançada de imagens e composição visual de alta performance.</div>
                         </div>
-                        
                         <div class="skill-card">
                             <i class="fa-solid fa-brain skill-icon"></i>
                             <div class="skill-title">Inteligência Artificial</div>
@@ -720,10 +751,8 @@
         }});
 
         // ======================================================================
-        // CONTROLE DE TEMPO DA ANIMAÇÃO DO MENU (AUTONOMIA PARA AJUSTES FINOS)
+        // CONTROLE DE TEMPO DA ANIMAÇÃO DO MENU
         // ======================================================================
-        // Altere o número abaixo para deixar o menu mais rápido ou mais lento.
-        // Valores recomendados: 0.5 (Rápido) | 0.8 (Padrão) | 1.2 (Bem Lento)
         const tempoAnimacaoMenu = 0.8; 
 
         const ham = document.getElementById('hamburger'), 
@@ -731,28 +760,23 @@
               logoCont = document.querySelector('.logo'),
               navBar = document.getElementById('main-nav');
 
-        // Função que fecha o menu e sincroniza o retorno da barra preta
         function fecharMenuMobile() {
             ham.classList.remove('ham-active');
             
-            // O GSAP sobe a tela azul primeiro...
+            // O GSAP sobe a tela azul primeiro
             gsap.to(overlay, { top: "-100%", duration: tempoAnimacaoMenu, ease: "power3.inOut" });
             
-            // E a barra preta da navbar só retorna quando a animação já estiver nos 70% finais.
-            // Se você quiser que a barra preta demore MAIS para aparecer, mude o 0.7 para 0.9.
-            // Se quiser que apareça ANTES, mude para 0.4.
+            // A barra preta da navbar só retorna quando a animação estiver quase no final
             setTimeout(() => {
                 navBar.classList.remove('nav-active-mobile'); 
                 logoCont.classList.remove('hide-logo');
-            }, (tempoAnimacaoMenu * 1000) * 0.9);
+            }, (tempoAnimacaoMenu * 1000) * 0.8);
         }
 
-        // Evento de Abrir/Fechar pelo Ícone Hamburger
         ham.addEventListener('click', () => {
             const isOpen = !ham.classList.contains('ham-active'); 
             
             if (isOpen) {
-                // Ao abrir, a barra fica transparente IMEDIATAMENTE e a tela azul desce
                 ham.classList.add('ham-active');
                 navBar.classList.add('nav-active-mobile'); 
                 logoCont.classList.add('hide-logo');
@@ -762,7 +786,6 @@
             }
         });
 
-        // Fechar menu automaticamente ao clicar em uma opção e rolar a página
         document.querySelectorAll('.mobile-overlay a').forEach(link => {
             link.addEventListener('click', () => {
                 fecharMenuMobile();
@@ -782,7 +805,7 @@
             });
 
             ScrollTrigger.matchMedia({
-                // Efeito Desktop (Direita -> Esquerda)
+                // Efeito Currículo Desktop (Direita -> Esquerda)
                 "(min-width: 1101px)": function() {
                     gsap.fromTo(".curriculo-mockup", 
                         { xPercent: 65, rotationX: 0, rotationY: 0, rotationZ: 0, scale: 0.65, boxShadow: "0 10px 30px rgba(0,0,0,0.5)" },
@@ -799,29 +822,13 @@
                     );
                 },
                 
-                // NOVO Efeito Mobile (Esquerda diagonal -> Centro vertical) - O "Scrub de Surgimento"
+                // Efeito Currículo Mobile (Esquerda diagonal -> Centro vertical)
                 "(max-width: 1100px)": function() {
                     gsap.fromTo(".curriculo-mockup",
+                        { xPercent: -20, rotationZ: -12, rotationY: -15, opacity: 0, scale: 0.8 },
                         {
-                            xPercent: -20,       // Inicia levemente para a esquerda
-                            rotationZ: -12,      // Tomba na diagonal
-                            rotationY: -15,      // Leve giro 3D
-                            opacity: 0,          // Invisível no início
-                            scale: 0.8           // Um pouco menor
-                        },
-                        {
-                            xPercent: 0,         // Alinha no centro perfeitamente
-                            rotationZ: 0,        // Fica reto verticalmente
-                            rotationY: 0,
-                            opacity: 1,          // Efeito de surgir (Fade In)
-                            scale: 1,
-                            ease: "none",
-                            scrollTrigger: {
-                                trigger: ".curriculo-image-col", // Gatilho é o próprio bloco da imagem
-                                start: "top 85%",                // Inicia quando aparece na parte de baixo da tela
-                                end: "center 55%",               // Termina no meio exato da tela
-                                scrub: 1                         // Mantém o Scrub Animation vinculado à rolagem
-                            }
+                            xPercent: 0, rotationZ: 0, rotationY: 0, opacity: 1, scale: 1, ease: "none",
+                            scrollTrigger: { trigger: ".curriculo-image-col", start: "top 85%", end: "center 55%", scrub: 1 }
                         }
                     );
                 }
@@ -860,6 +867,3 @@
     </script>
 </body>
 </html>
-
-
-
