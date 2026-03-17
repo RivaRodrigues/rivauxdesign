@@ -140,6 +140,29 @@
         }
         .btn-project-cta:hover { background: #000; color: var(--blue); }
 
+        /* --- SEÇÃO CONTATO (Adicionada para conversão) --- */
+        .contact-section { background-color: var(--bg); position: relative; z-index: 100; padding: 0 8% 120px; }
+        .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        
+        .contact-text h2 { font-family: var(--font-heading); font-size: clamp(3rem, 8vw, 5rem); font-weight: 800; line-height: 0.9; text-transform: uppercase; margin-bottom: 20px; }
+        .contact-text h2 .white { color: var(--white); }
+        .contact-text h2 .blue { color: var(--blue); }
+        .contact-text p { font-size: 1.1rem; color: rgba(255,255,255,0.6); margin-bottom: 40px; line-height: 1.6; }
+        
+        .btn-whatsapp { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 35px; background: #00C2FF; color: #000; font-weight: 800; text-transform: uppercase; border-radius: 50px; text-decoration: none; font-size: 14px; transition: 0.3s; }
+        .btn-whatsapp:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 194, 255, 0.4); }
+
+        .contact-form { display: flex; flex-direction: column; gap: 30px; background: #0a0a0a; padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+        .input-group { position: relative; }
+        .input-group input, .input-group textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 15px 0; color: white; font-family: var(--font-body); font-size: 1rem; outline: none; transition: 0.3s; resize: none; }
+        .input-group input:focus, .input-group textarea:focus { border-bottom-color: var(--blue); }
+        .input-group label { position: absolute; top: 15px; left: 0; color: rgba(255,255,255,0.4); pointer-events: none; transition: 0.3s; font-size: 1rem; }
+        .input-group input:focus ~ label, .input-group input:valid ~ label,
+        .input-group textarea:focus ~ label, .input-group textarea:valid ~ label { top: -15px; font-size: 0.8rem; color: var(--blue); }
+        
+        .btn-submit { align-self: flex-start; background: transparent; border: 1px solid var(--blue); color: var(--blue); padding: 15px 45px; margin-top: 38px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-family: var(--font-body); cursor: pointer; transition: 0.3s; }
+        .btn-submit:hover { background: var(--white); color: #000; border: 1px solid var(--white);}
+
         /* -------------------------------------------
            FOOTER DISRUPTIVO
         ------------------------------------------- */
@@ -177,27 +200,17 @@
             
             .projects-page-header { padding: 140px 5% 40px; }
             
-            /* ===========================================
-               CORREÇÃO DEFINITIVA DO SCROLL DE FILTROS 
-            =========================================== */
+            /* --- SCROLL DE FILTROS --- */
             .filters-container {
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                justify-content: flex-start;
-                padding: 0 5% 15px 5%;
-                -webkit-overflow-scrolling: touch;
-                touch-action: pan-x; /* Permite arrastar para os lados */
-                overscroll-behavior-x: contain;
-                width: 100%;
+                flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start;
+                padding: 0 5% 15px 5%; -webkit-overflow-scrolling: touch;
+                touch-action: pan-x; overscroll-behavior-x: contain; width: 100%;
             }
             .filters-container::-webkit-scrollbar { display: none; }
-            
-            .filter-btn { 
-                flex: 0 0 auto; /* Impede matematicamente o botão de encolher */
-                scroll-snap-align: start; 
-            }
+            .filter-btn { flex: 0 0 auto; scroll-snap-align: start; }
+            .filters-container::after { content: ''; padding-right: 5%; }
 
-            /* CSS STICKY: Empilhamento dos Projetos no Mobile */
+            /* --- CSS STICKY: Empilhamento dos Projetos no Mobile --- */
             .projects-portfolio-grid { 
                 grid-template-columns: 1fr; 
                 padding: 0 5% 80px; 
@@ -217,10 +230,21 @@
             .portfolio-card:nth-child(4) { top: 160px; }
             .portfolio-card:nth-child(5) { top: 180px; }
             .portfolio-card:nth-child(6) { top: 200px; }
+            .portfolio-card:nth-child(7) { top: 220px; }
+            .portfolio-card:nth-child(8) { top: 240px; }
+
+            .contact-layout { grid-template-columns: 1fr; gap: 50px; }
+            .contact-form { padding: 30px 20px; }
 
             .footer-content { flex-direction: column; gap: 30px; text-align: center; }
             .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
             .giant-text { font-size: 22vw; letter-spacing: -2px; bottom: -1vw; }
+        }
+
+        @media (max-width: 600px) {
+            .contact-section { padding: 0 20px 80px; }
+            .contact-text h2 { font-size: 2.8rem; }
+            .btn-whatsapp, .btn-submit { width: 100%; justify-content: center; text-align: center; display: flex; }
         }
     </style>
 </head>
@@ -295,7 +319,7 @@
                         <span class="tag">JavaScript</span>
                         <span class="tag">Google Sheets API</span>
                     </div>
-                    <a href="#" class="btn-project-cta">Ver Case Study</a>
+                    <a href="case-cedesp.html" class="btn-project-cta">Ver Case Study</a>
                 </div>
             </div>
 
@@ -342,6 +366,35 @@
             </div>
 
         </div>
+
+        <section class="contact-section" id="contato">
+            <div class="contact-layout">
+                <div class="contact-text scroll-reveal">
+                    <h2><span class="white">VAMOS</span><br><span class="blue">CONVERSAR?</span></h2>
+                    <p>Procurando um UX/UI Designer que une domínio técnico, facilitação de equipes e uma comunicação acima da média? Escolha o canal de sua preferência e vamos construir o seu próximo produto.</p>
+                    <a href="https://wa.me/5511939271712" target="_blank" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> Iniciar no WhatsApp
+                    </a>
+                </div>
+                <div class="contact-form scroll-reveal">
+                    <form onsubmit="event.preventDefault(); alert('Mensagem enviada! Retornarei em breve.');">
+                        <div class="input-group">
+                            <input type="text" id="name" required>
+                            <label for="name">Seu Nome</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" id="email" required>
+                            <label for="email">Seu E-mail</label>
+                        </div>
+                        <div class="input-group">
+                            <textarea id="message" rows="4" required></textarea>
+                            <label for="message">Como posso te ajudar?</label>
+                        </div>
+                        <button type="submit" class="btn-submit">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
